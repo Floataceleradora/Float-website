@@ -495,7 +495,7 @@ h1 em { font-style: normal; color: var(--amber); }
 
 .eco-wrap {
   width: 100%;
-  max-width: 660px;
+  max-width: 760px;
 }
 
 .eco-edge { transition: stroke 0.6s, stroke-dasharray 0.6s, stroke-width 0.6s; }
@@ -633,6 +633,62 @@ h1 em { font-style: normal; color: var(--amber); }
   .section3 .s3-header { text-align: center; }
   .layers-toggle { align-self: center; }
 }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(8,10,12,0.98);
+  z-index: 400;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  backdrop-filter: blur(20px);
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.mobile-menu a:hover { color: var(--text); }
+
+.mobile-menu a.active {
+  color: var(--amber);
+  border-bottom: 2px solid var(--amber);
+  padding-bottom: 4px;
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-menu-close span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--text-secondary);
+  margin: 6px 0;
+  transition: all 0.2s;
+}
+
+.mobile-menu-close span:first-child { transform: rotate(45deg) translate(5px, 5px); }
+.mobile-menu-close span:last-child  { transform: rotate(-45deg) translate(5px, -5px); }
 </style>
 </head>
 <body>
@@ -648,10 +704,22 @@ h1 em { font-style: normal; color: var(--amber); }
     <li><a href="#servicos">Serviços</a></li>
   </ul>
   <a href="https://wa.me/5511974847778" class="nav-cta">Falar conosco</a>
-  <div class="nav-hamburger" role="button" aria-label="Menu">
+  <div class="nav-hamburger" role="button" aria-label="Menu" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Fechar menu">
+    <span></span>
+    <span></span>
+  </button>
+  <a href="/" class="active" onclick="toggleMenu()">Home</a>
+  <a href="#quem-somos" onclick="toggleMenu()">Quem somos</a>
+  <a href="#servicos" onclick="toggleMenu()">Serviços</a>
+</div>
+
 
 <!-- ════════════════════════════ -->
 <!-- SEÇÃO 1 — HERO              -->
@@ -994,6 +1062,12 @@ function ecoState(s) {
   document.getElementById('eco-tip').textContent = after
     ? 'O banco vira infraestrutura regulada. O relacionamento com cada stakeholder passa a ser seu.'
     : 'O banco está no meio de cada relacionamento — com seus próprios interesses e suas próprias regras.';
+}
+</script>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
 }
 </script>
 </body>
