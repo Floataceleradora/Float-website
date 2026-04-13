@@ -401,6 +401,13 @@ h1 em { font-style: normal; color: var(--amber); }
 }
 
 @media (max-width: 768px) {
+  .section3 { grid-template-columns: 1fr; padding: 64px 20px; gap: 40px; }
+  .s3-left { align-items: center; text-align: center; }
+  .s3-header { text-align: center; }
+  .s3-label { justify-content: center; }
+  .s3-label::after { display: block; }
+  .eco-toggle { align-self: center; width: 100%; flex-direction: column; }
+  .eco-tip { text-align: center; }
   nav { padding: 0 20px; gap: 16px; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
@@ -484,10 +491,10 @@ h1 em { font-style: normal; color: var(--amber); }
 /* SEÇÃO 3 — ECOSSISTEMA */
 .section3 {
   padding: 100px 64px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
   align-items: center;
-  gap: 48px;
   position: relative;
 }
 
@@ -592,6 +599,39 @@ h1 em { font-style: normal; color: var(--amber); }
 .eco-glow-line.d2 { animation-delay: 0.5s; }
 .eco-glow-line.d3 { animation-delay: 1s; }
 .eco-glow-line.d4 { animation-delay: 1.5s; }
+
+.s3-left {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.s3-header {
+  text-align: left;
+  max-width: 100%;
+}
+
+.s3-label {
+  justify-content: flex-start;
+}
+
+.s3-label::before { display: block; }
+.s3-label::after  { display: none; }
+
+.eco-toggle { align-self: flex-start; }
+
+.eco-tip {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  text-align: left;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.eco-wrap { position: relative; z-index: 2; }
 </style>
 </head>
 <body>
@@ -809,116 +849,17 @@ h1 em { font-style: normal; color: var(--amber); }
 <!-- ════════════════════════════ -->
 <section class="section3" id="integracao-vertical">
 
-  <div class="s3-header">
+  <div class="s3-left">
+    <div class="s3-header">
     <div class="s3-label">Integração Vertical</div>
-    <h2 class="s3-title">O controle começa<br>pelas camadas.</h2>
-    <p class="s3-sub">Integração vertical é o movimento de recuperar o controle sobre as camadas do seu ecossistema financeiro que hoje pertencem a terceiros. Cada camada que você passa a controlar é uma dependência eliminada, uma margem capturada, um vínculo fortalecido.</p>
-  </div>
-
-  <div class="eco-toggle">
+    <div class="eco-toggle">
     <button class="eco-btn active" id="eco-btn-b" onclick="ecoState('before')">Sem integração vertical</button>
     <button class="eco-btn" id="eco-btn-a" onclick="ecoState('after')">Com integração vertical</button>
   </div>
-
-  <div class="eco-wrap">
-    <svg viewBox="0 0 520 360" width="100%" id="eco-svg">
-      <defs>
-        <marker id="eco-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M1 2L8 5L1 8" fill="none" stroke="context-stroke" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </marker>
-      </defs>
-
-      <!-- EDGES — from node border to node border -->
-      <line id="ec-cli" class="eco-edge" x1="260" y1="144" x2="260" y2="64"  stroke="#252E3E" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#eco-arr)"/>
-      <line id="ec-ops" class="eco-edge" x1="200" y1="178" x2="132" y2="178" stroke="#252E3E" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#eco-arr)"/>
-      <line id="ec-for" class="eco-edge" x1="207" y1="212" x2="120" y2="268" stroke="#252E3E" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#eco-arr)"/>
-      <line id="ec-col" class="eco-edge" x1="313" y1="212" x2="400" y2="268" stroke="#252E3E" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#eco-arr)"/>
-
-      <!-- BANCO INTERMEDIÁRIO — no midpoint of each edge -->
-      <g id="eb-cli" class="eco-bank">
-        <rect x="228" y="92" width="64" height="24" rx="5" fill="#080A0C" stroke="#1E2530" stroke-width="1"/>
-        <text x="260" y="108" text-anchor="middle" font-size="10" fill="#3A4A5C" font-family="Outfit,sans-serif">Banco</text>
-      </g>
-      <g id="eb-ops" class="eco-bank">
-        <rect x="134" y="166" width="64" height="24" rx="5" fill="#080A0C" stroke="#1E2530" stroke-width="1"/>
-        <text x="166" y="182" text-anchor="middle" font-size="10" fill="#3A4A5C" font-family="Outfit,sans-serif">Banco</text>
-      </g>
-      <g id="eb-for" class="eco-bank">
-        <rect x="131" y="228" width="64" height="24" rx="5" fill="#080A0C" stroke="#1E2530" stroke-width="1"/>
-        <text x="163" y="244" text-anchor="middle" font-size="10" fill="#3A4A5C" font-family="Outfit,sans-serif">Banco</text>
-      </g>
-      <g id="eb-col" class="eco-bank">
-        <rect x="325" y="228" width="64" height="24" rx="5" fill="#080A0C" stroke="#1E2530" stroke-width="1"/>
-        <text x="357" y="244" text-anchor="middle" font-size="10" fill="#3A4A5C" font-family="Outfit,sans-serif">Banco</text>
-      </g>
-
-      <!-- BENEFICIOS — dentro de cada nó, substituindo o sub-texto -->
-      <!-- Clientes: dentro do nó, mesma posição do sub-texto -->
-      <g id="ep-cli" class="eco-benefit">
-        <text x="260" y="44" text-anchor="middle" font-size="9" font-weight="500" fill="#ffb321" font-family="Outfit,sans-serif">Controle integral da</text>
-        <text x="260" y="56" text-anchor="middle" font-size="9" font-weight="500" fill="#ffb321" font-family="Outfit,sans-serif">jornada e da oferta</text>
-      </g>
-      <!-- Operação: dentro do nó -->
-      <g id="ep-ops" class="eco-benefit">
-        <text x="72" y="186" text-anchor="middle" font-size="9" font-weight="500" fill="#ffb321" font-family="Outfit,sans-serif">Autonomia</text>
-        <text x="72" y="197" text-anchor="middle" font-size="9" font-weight="500" fill="#ffb321" font-family="Outfit,sans-serif">para crescer</text>
-      </g>
-      <!-- Fornecedores: dentro do nó -->
-      <g id="ep-for" class="eco-benefit">
-        <text x="80" y="300" text-anchor="middle" font-size="9" font-weight="500" fill="#ffb321" font-family="Outfit,sans-serif">Vínculo</text>
-        <text x="80" y="311" text-anchor="middle" font-size="9" font-weight="500" fill="#ffb321" font-family="Outfit,sans-serif">fortalecido</text>
-      </g>
-      <!-- Colaboradores: dentro do nó -->
-      <g id="ep-col" class="eco-benefit">
-        <text x="440" y="300" text-anchor="middle" font-size="9" font-weight="500" fill="#ffb321" font-family="Outfit,sans-serif">Mais</text>
-        <text x="440" y="311" text-anchor="middle" font-size="9" font-weight="500" fill="#ffb321" font-family="Outfit,sans-serif">engajados</text>
-      </g>
-
-      <!-- GLOW LINES — animação de fluxo nas arestas (só no "depois") -->
-      <line id="glow-cli" class="eco-glow-line d1" x1="260" y1="144" x2="260" y2="64"/>
-      <line id="glow-ops" class="eco-glow-line d2" x1="200" y1="178" x2="132" y2="178"/>
-      <line id="glow-for" class="eco-glow-line d3" x1="207" y1="212" x2="120" y2="268"/>
-      <line id="glow-col" class="eco-glow-line d4" x1="313" y1="212" x2="400" y2="268"/>
-
-      <!-- BANCO INFRA — aparece no depois -->
-      <g id="eco-infra" class="eco-infra">
-        <line x1="260" y1="212" x2="260" y2="296" stroke="#1A2030" stroke-width="0.8" stroke-dasharray="3 3"/>
-        <rect x="180" y="296" width="160" height="40" rx="8" fill="#080A0C" stroke="#1A2030" stroke-width="1"/>
-        <text x="260" y="313" text-anchor="middle" font-size="9.5" font-weight="500" fill="#2A3545" font-family="Outfit,sans-serif" letter-spacing="0.06em">BANCO · BAAS</text>
-        <text x="260" y="327" text-anchor="middle" font-size="8.5" fill="#1E2530" font-family="Outfit,sans-serif">Infraestrutura regulada</text>
-      </g>
-
-      <!-- EMPRESA CENTRAL -->
-      <rect id="eco-crect" x="200" y="144" width="120" height="68" rx="12" fill="#0E1114" stroke="#1E2530" stroke-width="1.5"/>
-      <text x="260" y="174" text-anchor="middle" font-size="13" font-weight="600" fill="#F0F4FA" font-family="Outfit,sans-serif" letter-spacing="-0.01em">Empresa</text>
-      <text id="eco-csub" x="260" y="192" text-anchor="middle" font-size="9" fill="#2A3545" font-family="Outfit,sans-serif">sem controle</text>
-
-      <!-- STAKEHOLDERS — tamanho uniforme, bem posicionados -->
-      <g id="es-cli">
-        <rect class="eco-srect" x="192" y="12" width="136" height="52" rx="10" fill="#0E1114" stroke="#1E2530" stroke-width="1"/>
-        <text x="260" y="35" text-anchor="middle" font-size="12" font-weight="500" fill="#E8EDF5" font-family="Outfit,sans-serif">Clientes</text>
-        <text id="sub-cli" class="eco-ssub" x="260" y="52" text-anchor="middle" font-size="9" fill="#3D4A5C" font-family="Outfit,sans-serif">pagam pelo banco</text>
-      </g>
-      <g id="es-for">
-        <rect class="eco-srect" x="12" y="268" width="136" height="52" rx="10" fill="#0E1114" stroke="#1E2530" stroke-width="1"/>
-        <text x="80" y="291" text-anchor="middle" font-size="12" font-weight="500" fill="#E8EDF5" font-family="Outfit,sans-serif">Fornecedores</text>
-        <text id="sub-for" class="eco-ssub" x="80" y="308" text-anchor="middle" font-size="9" fill="#3D4A5C" font-family="Outfit,sans-serif">crédito externo</text>
-      </g>
-      <g id="es-col">
-        <rect class="eco-srect" x="372" y="268" width="136" height="52" rx="10" fill="#0E1114" stroke="#1E2530" stroke-width="1"/>
-        <text x="440" y="291" text-anchor="middle" font-size="12" font-weight="500" fill="#E8EDF5" font-family="Outfit,sans-serif">Colaboradores</text>
-        <text id="sub-col" class="eco-ssub" x="440" y="308" text-anchor="middle" font-size="9" fill="#3D4A5C" font-family="Outfit,sans-serif">folha no banco</text>
-      </g>
-      <g id="es-ops">
-        <rect class="eco-srect" x="12" y="152" width="120" height="52" rx="10" fill="#0E1114" stroke="#1E2530" stroke-width="1"/>
-        <text x="72" y="175" text-anchor="middle" font-size="12" font-weight="500" fill="#E8EDF5" font-family="Outfit,sans-serif">Operação</text>
-        <text id="sub-ops" class="eco-ssub" x="72" y="192" text-anchor="middle" font-size="9" fill="#3D4A5C" font-family="Outfit,sans-serif">tesouraria no banco</text>
-      </g>
-
-    </svg>
+    <p class="eco-tip" id="eco-tip">O banco está no meio de cada relacionamento — com seus próprios interesses e suas próprias regras.</p>
   </div>
 
-  <p class="eco-tip" id="eco-tip">O banco está no meio de cada relacionamento — com seus próprios interesses e suas próprias regras.</p>
+  
 
 </section>
 
