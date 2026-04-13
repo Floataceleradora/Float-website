@@ -400,44 +400,7 @@ h1 em { font-style: normal; color: var(--amber); }
   .flywheel-wrap { width: 320px; height: 320px; }
 }
 
-@media (max-width: 768px) {
-  .section3 { grid-template-columns: 1fr; padding: 64px 20px; gap: 40px; }
-  .eco-wrap { width: 100%; max-width: 100%; }
-  #eco-svg { width: 100%; max-width: 480px; display: block; margin: 0 auto; }
-  .s3-left { align-items: center; text-align: center; }
-  .s3-header { text-align: center; }
-  .s3-label { justify-content: center; }
-  .s3-label::after { display: block; }
-  .eco-toggle { align-self: center; width: 100%; flex-direction: column; }
-  .eco-tip { text-align: center; }
-  nav { padding: 0 20px; gap: 16px; }
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
-  .hero-content { padding: 44px 20px 36px; max-width: 100%; }
-  .sub { max-width: 100%; }
-  .actions { flex-direction: column; align-items: stretch; gap: 14px; }
-  .btn-wa { justify-content: center; }
-  .stats { padding: 0 20px; grid-template-columns: 1fr 1fr; }
-  .stat { padding: 24px 20px 24px 0; }
-  .stat + .stat { padding-left: 20px; }
-  .stat:last-child { grid-column: 1 / -1; border-left: none; border-top: 1px solid var(--border); padding-left: 0; }
-  .section2 { grid-template-columns: 1fr; padding: 64px 20px; gap: 56px; }
-  .section2 .text-col { text-align: center; }
-  .s2-label { justify-content: center; }
-  .s2-label::after { content: ''; display: block; width: 20px; height: 1px; background: var(--amber); opacity: 0.4; flex-shrink: 0; }
-  .flywheel-col { align-items: center; }
-  .flywheel-wrap { width: 300px; height: 300px; }
-  .float-cta { bottom: 20px; right: 16px; font-size: 12px; padding: 12px 18px; }
-  .hero-content { text-align: center; }
-  .eyebrow { justify-content: center; }
-  .eyebrow::before { display: none; }
-  .actions { align-items: center; }
-  .btn-ghost { text-align: center; }
-  .stat { text-align: center; }
-  .stat-num { justify-content: center; }
-  .section3 .s3-header { text-align: center; }
-  .layers-toggle { align-self: center; }
-}
+
 
 @media (max-width: 400px) {
   .stats { grid-template-columns: 1fr; }
@@ -567,10 +530,7 @@ h1 em { font-style: normal; color: var(--amber); }
   font-style: italic;
 }
 
-@media (max-width: 768px) {
-  .section3 { padding: 64px 20px; gap: 32px; }
-  .eco-toggle { flex-direction: column; width: 100%; }
-}
+
 
 
 @keyframes eco-flow {
@@ -634,6 +594,45 @@ h1 em { font-style: normal; color: var(--amber); }
 }
 
 .eco-wrap { position: relative; z-index: 2; }
+@media (max-width: 768px) {
+  .section3 { grid-template-columns: 1fr; padding: 64px 20px; gap: 40px; }
+  .eco-wrap { width: 100%; }
+  .section3 .eco-wrap { grid-column: 1; }
+  #eco-svg { width: 100%; display: block; margin: 0 auto; }
+  .s3-left { align-items: center; text-align: center; }
+  .s3-header { text-align: center; }
+  .s3-label { justify-content: center; }
+  .s3-label::after { display: block; }
+  .eco-toggle { align-self: center; width: 100%; flex-direction: column; }
+  .eco-tip { text-align: center; }
+  nav { padding: 0 20px; gap: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero-content { padding: 44px 20px 36px; max-width: 100%; }
+  .sub { max-width: 100%; }
+  .actions { flex-direction: column; align-items: stretch; gap: 14px; }
+  .btn-wa { justify-content: center; }
+  .stats { padding: 0 20px; grid-template-columns: 1fr 1fr; }
+  .stat { padding: 24px 20px 24px 0; }
+  .stat + .stat { padding-left: 20px; }
+  .stat:last-child { grid-column: 1 / -1; border-left: none; border-top: 1px solid var(--border); padding-left: 0; }
+  .section2 { grid-template-columns: 1fr; padding: 64px 20px; gap: 56px; }
+  .section2 .text-col { text-align: center; }
+  .s2-label { justify-content: center; }
+  .s2-label::after { content: ''; display: block; width: 20px; height: 1px; background: var(--amber); opacity: 0.4; flex-shrink: 0; }
+  .flywheel-col { align-items: center; }
+  .flywheel-wrap { width: 300px; height: 300px; }
+  .float-cta { bottom: 20px; right: 16px; font-size: 12px; padding: 12px 18px; }
+  .hero-content { text-align: center; }
+  .eyebrow { justify-content: center; }
+  .eyebrow::before { display: none; }
+  .actions { align-items: center; }
+  .btn-ghost { text-align: center; }
+  .stat { text-align: center; }
+  .stat-num { justify-content: center; }
+  .section3 .s3-header { text-align: center; }
+  .layers-toggle { align-self: center; }
+}
 </style>
 </head>
 <body>
