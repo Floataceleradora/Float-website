@@ -114,63 +114,62 @@ nav {
 }
 .nav-cta:hover { background: #ffc34a; transform: translateY(-1px); }
 
-/* hamburger */
-.hamburger {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  padding: 6px 4px;
-}
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--text-sec);
-  border-radius: 2px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  transform-origin: center;
-}
-.hamburger:hover span { background: var(--text); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; flex-shrink: 0; }
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-secondary); }
 
-/* dropdown */
-.nav-dropdown {
+/* ── MOBILE MENU ── */
+.mobile-menu {
   display: none;
   position: fixed;
   inset: 0;
-  background: var(--black);
-  z-index: 300;
+  background: rgba(8,10,12,0.98);
+  z-index: 400;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-.nav-dropdown.open {
-  display: flex;
-  opacity: 1;
+  gap: 40px;
+  backdrop-filter: blur(20px);
 }
 
-.nav-dropdown a {
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
   font-family: 'Outfit', sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--text-sec);
+  color: var(--text-secondary);
   text-decoration: none;
-  padding: 20px 32px;
-  text-align: center;
-  width: 100%;
   transition: color 0.2s;
 }
-.nav-dropdown a:last-child { border-bottom: none; }
-.nav-dropdown a:hover { color: var(--text); background: rgba(255,255,255,0.03); }
 
-.nav-dropdown a.active { color: var(--amber); }
+.mobile-menu a:hover { color: var(--text); }
+
+.mobile-menu a.active {
+  color: var(--amber);
+  border-bottom: 2px solid var(--amber);
+  padding-bottom: 4px;
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-menu-close span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--text-secondary);
+}
+
+.mobile-menu-close span:first-child { transform: rotate(45deg) translate(1px, 1px); }
+.mobile-menu-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); }
 
 
 /* ── HERO ── */
