@@ -505,45 +505,9 @@ footer {
 </footer>
 
 <script>
-  const btn  = document.getElementById('hamburger');
-  const menu = document.getElementById('navDropdown');
-
-  function openMenu() {
-    menu.style.display = 'flex';
-    requestAnimationFrame(() => { menu.classList.add('open'); });
-    btn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-    // Mudar hamburger para X
-    const spans = btn.querySelectorAll('span');
-    spans[0].style.transform = 'translateY(7px) rotate(45deg)';
-    spans[1].style.opacity = '0';
-    spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
-  }
-
-  function closeMenu() {
-    menu.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    // Voltar hamburger
-    const spans = btn.querySelectorAll('span');
-    spans[0].style.transform = '';
-    spans[1].style.opacity = '';
-    spans[2].style.transform = '';
-    setTimeout(() => { if (!menu.classList.contains('open')) menu.style.display = 'none'; }, 250);
-  }
-
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menu.classList.contains('open') ? closeMenu() : openMenu();
-  });
-
-  // Fechar com ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
-  });
-
-  // Links fecham o menu
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => closeMenu()));
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
 </script>
 
 </body>
