@@ -131,58 +131,47 @@ nav {
   height: 2px;
   background: var(--text-sec);
   border-radius: 2px;
-  transition: background 0.2s;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
 }
 .hamburger:hover span { background: var(--text); }
 
 /* dropdown */
 .nav-dropdown {
-  position: absolute;
-  top: calc(100% + 12px);
-  right: 0;
-  background: #0E1114;
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  overflow: hidden;
-  min-width: 188px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 300;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
   opacity: 0;
-  pointer-events: none;
-  transform: translateY(-8px);
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition: opacity 0.25s ease;
 }
 .nav-dropdown.open {
+  display: flex;
   opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
 }
 
 .nav-dropdown a {
-  display: block;
-  padding: 14px 20px;
   font-family: 'Outfit', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text-sec);
   text-decoration: none;
-  border-bottom: 1px solid var(--border);
-  transition: color 0.15s, background 0.15s;
-  position: relative;
+  padding: 20px 32px;
+  text-align: center;
+  width: 100%;
+  transition: color 0.2s;
 }
 .nav-dropdown a:last-child { border-bottom: none; }
 .nav-dropdown a:hover { color: var(--text); background: rgba(255,255,255,0.03); }
 
-.nav-dropdown a.active { color: var(--text); }
-.nav-dropdown a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 20px; right: 20px;
-  height: 2px;
-  background: var(--amber);
-  border-radius: 1px 1px 0 0;
-}
+.nav-dropdown a.active { color: var(--amber); }
+
 
 /* ── HERO ── */
 .hero {
@@ -521,21 +510,42 @@ footer {
   const btn  = document.getElementById('hamburger');
   const menu = document.getElementById('navDropdown');
 
+  function openMenu() {
+    menu.style.display = 'flex';
+    requestAnimationFrame(() => { menu.classList.add('open'); });
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    // Mudar hamburger para X
+    const spans = btn.querySelectorAll('span');
+    spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+  }
+
+  function closeMenu() {
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    // Voltar hamburger
+    const spans = btn.querySelectorAll('span');
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+    setTimeout(() => { if (!menu.classList.contains('open')) menu.style.display = 'none'; }, 250);
+  }
+
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
-    const isOpen = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(isOpen));
+    menu.classList.contains('open') ? closeMenu() : openMenu();
   });
 
-  document.addEventListener('click', () => {
-    menu.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
+  // Fechar com ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
   });
 
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    menu.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-  }));
+  // Links fecham o menu
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => closeMenu()));
 </script>
 
 </body>
