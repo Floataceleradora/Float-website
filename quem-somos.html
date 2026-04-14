@@ -351,8 +351,8 @@ footer {
 
   /* Esconde links do desktop, mostra hamburger */
   .nav-links { display: none !important; }
-  .hamburger { display: flex; }
-  nav { grid-template-columns: 1fr 1fr; }
+  .nav-hamburger { display: flex; }
+  nav { grid-template-columns: auto 1fr auto; }
 
   /* Hero centralizado */
   .hero { padding: 100px 24px 56px; text-align: center; }
@@ -397,9 +397,11 @@ footer {
     <a href="/servicos.html">Serviços</a>
   </div>
 
-  <a href="https://wa.me/5511974847778" class="nav-cta">Falar conosco</a>
-  <div class="nav-hamburger" role="button" aria-label="Menu" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+  <div class="nav-right">
+    <a href="https://wa.me/5511974847778" class="nav-cta">Falar conosco</a>
+    <div class="nav-hamburger" role="button" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
@@ -413,7 +415,6 @@ footer {
   <a href="/quem-somos.html" class="active" onclick="toggleMenu()">Quem Somos</a>
   <a href="/servicos.html" onclick="toggleMenu()">Serviços</a>
 </div>
-</nav>
 
 <!-- ── HERO ── -->
 <section class="hero">
