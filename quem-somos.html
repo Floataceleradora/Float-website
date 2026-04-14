@@ -67,6 +67,37 @@ nav {
   position: relative;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.nav-links a {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-sec);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--text); }
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: var(--amber);
+  border-radius: 1px;
+}
 .nav-cta {
   font-family: 'Outfit', sans-serif;
   font-size: 12px;
@@ -88,7 +119,7 @@ nav {
   background: none;
   border: none;
   cursor: pointer;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
