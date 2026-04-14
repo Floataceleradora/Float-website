@@ -610,39 +610,9 @@
 </footer>
 
 <script>
-  // Mobile menu
-  const btn = document.getElementById("hamburger");
-  const menu = document.getElementById("navDropdown");
-
-  function openMenu() {
-    menu.style.display = "flex";
-    requestAnimationFrame(() => menu.classList.add("open"));
-    btn.setAttribute("aria-expanded", "true");
-    document.body.style.overflow = "hidden";
-    const s = btn.querySelectorAll("span");
-    s[0].style.transform = "translateY(7px) rotate(45deg)";
-    s[1].style.opacity = "0";
-    s[2].style.transform = "translateY(-7px) rotate(-45deg)";
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
   }
-
-  function closeMenu() {
-    menu.classList.remove("open");
-    btn.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
-    const s = btn.querySelectorAll("span");
-    s[0].style.transform = "";
-    s[1].style.opacity = "";
-    s[2].style.transform = "";
-    setTimeout(() => { if (!menu.classList.contains("open")) menu.style.display = "none"; }, 250);
-  }
-
-  btn.addEventListener("click", e => {
-    e.stopPropagation();
-    menu.classList.contains("open") ? closeMenu() : openMenu();
-  });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
-  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
-
   // Carousel
   const track = document.getElementById("carouselTrack");
   const cards = track.querySelectorAll(".srv-card");
